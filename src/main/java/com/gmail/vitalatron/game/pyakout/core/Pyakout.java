@@ -9,9 +9,9 @@ import com.gmail.vitalatron.game.visual.SwingGameWindow;
 import java.awt.*;
 
 public class Pyakout {
-    private static final int WINDOW_WIDTH = 800;
+    public static final int WINDOW_WIDTH = 800;
 
-    private static final int WINDOW_HEIGHT = 600;
+    public static final int WINDOW_HEIGHT = 600;
 
     private final SwingGameWindow window;
 
@@ -22,10 +22,11 @@ public class Pyakout {
     public Pyakout() {
         this.window = new SwingGameWindow("Pyakout", new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         this.inputHandler = new SwingUserInputHandler(this.window.getFrame());
+        this.inputHandler.addListener(sceneHolder);
 
         this.window.setSceneHolder(this.sceneHolder);
 
-        MenuScene menuScene = new MenuScene();
+        MenuScene menuScene = new MenuScene(WINDOW_WIDTH, WINDOW_HEIGHT);
         this.sceneHolder.addScene(menuScene);
         this.sceneHolder.setCurrentScene(menuScene);
         this.window.show();
